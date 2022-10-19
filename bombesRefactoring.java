@@ -67,6 +67,7 @@ public class Main {
         do {
             positionX = (int) (Math.random() * x);
             positionY = (int) (Math.random() * y);
+            //on vérifie si la case n'est pas déjà à "true" (par défaut les cases sont à false car boolean)
             if(!plateau[positionX][positionY]) {
             plateau[positionX][positionY] = true;
             //  System.out.println("la bombe " + instalBombes + " est installée");
@@ -83,8 +84,7 @@ public class Main {
             int choixX = instructionJoueur("Veuillez indiquer la case (axe des X) que vous souhaitez cibler");
             int choixY = instructionJoueur("Veuillez indiquer la case (axe des Y) que vous souhaitez cibler");
             char o = 'o';
-            char b = 'b';
-            //on vérifie si la case n'est pas déjà à "true" (par défaut les cases sont à false car boolean)
+            char b = 'b';            
             if (plateau[choixX][choixY]) {
                 bombesTrouvees++;
                 System.out.println("Bravo vous avec trouvé la bombe numéro " + bombesTrouvees + " Il vous en reste " + (bombes-bombesTrouvees));
@@ -98,5 +98,6 @@ public class Main {
     }
 
  }
+
 
 
