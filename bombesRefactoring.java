@@ -65,11 +65,13 @@ public class Main {
         int positionY;
         int instalBombes = 0;
         do {
-            positionX = (int) (Math.random() * (x - 1));
-            positionY = (int) (Math.random() * (y - 1));
+            positionX = (int) (Math.random() * x);
+            positionY = (int) (Math.random() * y);
+            if(!plateau[positionX][positionY]) {
             plateau[positionX][positionY] = true;
             //  System.out.println("la bombe " + instalBombes + " est installée");
             instalBombes++;
+            }
         } while (instalBombes < bombes);
         System.out.println("Voici la position des bombes : " + Arrays.deepToString(plateau));
         return plateau;
@@ -82,6 +84,7 @@ public class Main {
             int choixY = instructionJoueur("Veuillez indiquer la case (axe des Y) que vous souhaitez cibler");
             char o = 'o';
             char b = 'b';
+            //on vérifie si la case n'est pas déjà à "true" (par défaut les cases sont à false car boolean)
             if (plateau[choixX][choixY]) {
                 bombesTrouvees++;
                 System.out.println("Bravo vous avec trouvé la bombe numéro " + bombesTrouvees + " Il vous en reste " + (bombes-bombesTrouvees));
@@ -95,4 +98,5 @@ public class Main {
     }
 
  }
+
 
