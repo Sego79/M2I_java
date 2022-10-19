@@ -1,0 +1,92 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class JeuBombes {
+
+    public static void main(String[] args) {
+        /*
+        Jeu qui demande au joueur :
+        dimension de la grille = (x*y)
+        Combien de bombe voulez vous?
+
+        Le programme va positionner de manière aléatoire des bombes sur certaines cases (boolean).
+        Attention à éviter d'avoir 2 fois une même case sélectionnée.
+       .
+       Puis on invite le joueur à choisir des cases et on lui indique si il a trouvé une bombe ou non.
+       La fin du jeu est quand le joueur a trouvé toutes les bombes.
+        Le programme affiche le nombre de coup.
+
+        POur chaque coup vous affichez la grille dans la console avec les bombes découvertes
+         */
+
+
+        //CREATION DU PLATEAU DE JEU
+        Scanner s = new Scanner(System.in);
+        System.out.println("Veuillez indiquer la largeur du plateau (axe des x) :");
+        int x = s.nextInt();
+        System.out.println("Veuillez indiquer la hauteur du plateau (axe des y):");
+        int y = s.nextInt();
+        System.out.println("Veuillez indiquer le nombre de bombes sur le plateau:");
+        int bombes = s.nextInt();
+
+
+        //INITIALISATION DU PLATEAU DE JEU
+        boolean[][] plateau = new boolean[x][y];
+        int i, j;
+        for(i = 0; i < x; i++){
+            for(j = 0; j < y; j++){
+                plateau[i][j] = false;
+            }
+        }
+        //  System.out.println(Arrays.deepToString(plateau));
+
+        //INSTALLATION DES BOMBES AU HASARD SUR LE PLATEAU
+        int positionX;
+        int positionY;
+        int instalBombes = 0;
+        do {
+            positionX = (int) (Math.random() * (x));
+            positionY = (int) (Math.random() * (y));
+            //on vérifie si la case n'est pas déjà à "true" (par défaut les cases sont à false car boolean)
+            plateau[positionX][positionY] = true;
+            if(!plateau[positionX][positionY]) {
+            //  System.out.println("la bombe " + instalBombes + " est installée");
+            instalBombes++;
+            }
+        }while (instalBombes < bombes);
+        System.out.println("Voici la position des bombes : " + Arrays.deepToString(plateau));
+
+        //JEU
+        int bombesTrouvees =0;
+
+        //INITIALISATION DU PLATEAU DU JOUEUR
+        char[][] plateauJoueur = new char[x][y];
+        int k, l;
+        for(k = 0; k < x; k++){
+            for(l = 0; l < y; l++){
+                plateauJoueur[k][l] = '?';
+            }
+        }
+        System.out.println(Arrays.deepToString(plateauJoueur));
+        do{
+            System.out.println("Veuillez indiquer la case (axe des X) que vous souhaitez cibler");
+            int choixX = s.nextInt();
+            System.out.println("Veuillez indiquer la case (axe des Y) que vous souhaitez cibler");
+            int choixY = s.nextInt();
+            char o = 'o';
+            char b = 'b';
+
+            if (plateau[choixX][choixY]) {
+                bombesTrouvees++;
+                System.out.println("Bravo vous avec trouvé la bombe numéro " + bombesTrouvees + " Il vous en reste " + (bombes-bombesTrouvees));
+                plateauJoueur[choixX][choixY] = b;
+            } else {
+                System.out.println("Perdu, dommage!! Veuillez recommencer...");
+                plateauJoueur[choixX][choixY] = o;
+            }
+            System.out.println(Arrays.deepToString(plateauJoueur));
+        }while (bombesTrouvees != bombes );
+
+
+    }
+}
