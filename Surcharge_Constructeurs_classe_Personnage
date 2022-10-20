@@ -1,0 +1,64 @@
+package fr.m2i.formation.model;
+
+public class Personnage {
+    //Attributs
+    private String nom;
+
+    private String prenom;
+
+    private int age;
+
+    //CONSTRUCTEURS
+    public Personnage(String nom, String prenom, int age) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+    }
+
+    public Personnage(String nom, String prenom) {
+        this(nom, prenom, 0);
+    }
+
+    public Personnage() {
+        this("Balasko", "Josiane", (int) (Math.random() * 100)); //on appelle le 1er constructeur
+    }
+
+
+    //GETTERS ET SETTERS
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
+    //METHODES COMPLEMENTAIRES
+    public void sayHello(){
+        System.out.println("Hello " + nom);
+    }
+
+    public void presentation(){
+        System.out.println("Bonjour, voici les détails du patient : " + nom + " " + prenom + " " + age +"ans");
+    }
+    public void presentation(String message){
+        System.out.println(message + nom + " " + prenom);
+    }
+}
