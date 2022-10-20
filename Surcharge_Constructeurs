@@ -1,0 +1,36 @@
+package fr.m2i.formation.domain;
+
+import fr.m2i.formation.model.Personnage;
+import fr.m2i.formation.utils.OpeMath;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        /*
+          Créer une classe personne avec nom, prenom, age, say hello(), presentation().
+          Qd je fais l'instanciation de Personne je peux le faire en indiquant :
+                -nom, prenom
+                -nom, prenom, age
+                -rien
+            Ds le cas ou un attribut n'est pas mentionné à la construction on lui donne une valeur par défaut arbitraire.
+         */
+
+    //INSTANCIATION DES PERSONNES
+        Personnage p1 = new Personnage("DUPONT", "Albert", 74);
+        Personnage p2 = new Personnage("DYLAN", "Bob");
+        Personnage p3 = new Personnage();
+
+        System.out.printf("%s %s \n", p1.getPrenom(), p1.getNom());
+        System.out.printf("%s %s %dans \n", p1.getPrenom(), p1.getNom(), p1.getAge());
+        System.out.printf("%s %s \n", p2.getPrenom(), p2.getNom());
+        System.out.printf("%s %s %dans \n", p3.getPrenom(), p3.getNom(), p3.getAge());
+
+    //TEST DE SURCHAGE DE LA METHODE
+        p1.presentation();
+        p1.presentation("Nom du premier patient : ");
+        p3.presentation();
+        p3.presentation(" ici on n'a pas l'age ! ");
+    }
+
+}
