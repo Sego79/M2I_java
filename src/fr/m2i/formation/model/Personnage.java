@@ -1,7 +1,6 @@
 package fr.m2i.formation.model;
 
 public class Personnage {
-
     //Attributs
     private int age;
     private int taille;
