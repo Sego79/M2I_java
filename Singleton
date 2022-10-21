@@ -1,0 +1,38 @@
+package fr.m2i.formation.model;
+
+public class Singleton{
+        /*
+        singleton : classe qui fournit une seule instance d'objet de son type dans le cycle d'execution
+        Comment écrivez vous une classe qui permet de créer une instance à son appel?
+        1. On crée le constructeur
+        2. On crée notre instance
+        3. On crée notre getter qui va nous renvoyer l'instance. Si elle extiste déjà il la renvoi directement.
+        Sinon il la créee tout d'abord. Donc c'est toujours la même instance qui est renvoyée.
+           */
+
+       //1 seule instance stocké dans la variable "instance"
+       //attribut d'instance static
+       private static Singleton instance;
+
+       //GETTER AND SETTER
+       //méthodes d'instance public
+       //méthodes static afin de pouvoir être appelées depuis la classe
+       //Le GETTER  va permettre l'instanciation de "Singleton" au 1er appel
+       public static Singleton getInstance(){
+           if(instance == null){
+               instance = new Singleton(); //on peut créér notre instance dans cette classe car le constructeur est privé.
+                   }
+           return instance;
+       }
+
+        public static void setInstance(Singleton instance) {
+            Singleton.instance = instance;
+        }
+
+       //CONSTRUCTEUR
+       //Il est privé et donc il ne peut pas y avoir de création d'instance du singleton dans une autre classe
+        private Singleton() {
+        }
+
+
+}
